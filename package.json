@@ -1,7 +1,7 @@
 {
-  "name": "angular-quickstart",
+  "name": "countdown-angular",
   "version": "1.0.0",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "description": "Create your own countdown calendar",
   "scripts": {
     "build": "tsc -p src/",
     "build:watch": "tsc -p src/ -w",
@@ -38,9 +38,11 @@
     "core-js": "^2.4.1",
     "rxjs": "5.0.1",
     "zone.js": "^0.8.4",
-    "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.12.5"
+    "bootstrap": "3.3.7",
+    "jquery": "3.2.1",
+    "popper.js": "1.12.5",
+    "bootstrap-datepicker": "1.7.1",
+    "jsonfile": "4.0.0"
   },
   "devDependencies": {
     "concurrently": "^3.2.0",

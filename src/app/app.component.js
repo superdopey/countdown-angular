@@ -6,6 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+require("rxjs/add/operator/catch");
+require("rxjs/add/operator/map");
 var AppComponent = (function () {
     function AppComponent() {
         this.name = 'Pannenkoek';
@@ -15,7 +17,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1>",
+        template: "\n  <nav class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\" routerLink=\"/\" >CountDown</a>\n    </div>\n\n    <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n      <ul class=\"nav navbar-nav\">\n        <li class=\"active\"><a routerLink=\"/new\" >Nieuw <span class=\"sr-only\">(current)</span></a></li>      \n      </ul>\n    </div>\n  </div>\n</nav>\n  <calendar-list></calendar-list>\n\n  <router-outlet></router-outlet>",
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

@@ -8,26 +8,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var calendar_service_1 = require("../services/calendar.service");
-var CalendarListComponent = (function () {
-    function CalendarListComponent(calendarService) {
+var material_1 = require("@angular/material");
+var confirm_delete_countdown_dialog_1 = require("./confirm-delete-countdown-dialog");
+var CalendarListComponent = /** @class */ (function () {
+    function CalendarListComponent(calendarService, router, dialog) {
         this.calendarService = calendarService;
+        this.router = router;
+        this.dialog = dialog;
     }
     CalendarListComponent.prototype.ngOnInit = function () {
         this.calendars = this.calendarService.getCalendars();
+        //console.log(this.calendars);
     };
     CalendarListComponent.prototype.delete = function (calendar) {
         this.calendarService.delete(calendar);
     };
+    CalendarListComponent.prototype.confirmDelete = function (calendar) {
+        var dialogRef = this.dialog.open(confirm_delete_countdown_dialog_1.ConfirmDeleteCountDownDialog, {
+            width: '250px',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            console.log('The dialog was closed', result);
+        });
+    };
+    CalendarListComponent.prototype.edit = function (calendar) {
+        this.router.navigate(['/edit', calendar.id]);
+    };
+    CalendarListComponent = __decorate([
+        core_1.Component({
+            selector: 'calendar-list',
+            templateUrl: './calendar-list.component.html'
+        }),
+        __metadata("design:paramtypes", [calendar_service_1.CalendarService,
+            router_1.Router, material_1.MdDialog])
+    ], CalendarListComponent);
     return CalendarListComponent;
 }());
-CalendarListComponent = __decorate([
-    core_1.Component({
-        selector: 'calendar-list',
-        templateUrl: './calendar-list.component.html'
-    }),
-    __metadata("design:paramtypes", [calendar_service_1.CalendarService])
-], CalendarListComponent);
 exports.CalendarListComponent = CalendarListComponent;
 //# sourceMappingURL=calendar-list.component.js.map

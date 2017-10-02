@@ -1,5 +1,5 @@
-export class Calendar {    
-    public id: number;
+export class Calendar {
+    public id: string;
     public  date: string;
     public  description: string;
     constructor() {}

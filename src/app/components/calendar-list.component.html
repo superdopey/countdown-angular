@@ -1,5 +1,8 @@
 <ul>
-        <!-- <li *ngFor="let calendar of calendars">{{calendar.description}}</li> -->
-        <li *ngFor="let calendar of calendars | async">{{calendar.description}} <button (click)="delete(calendar)"
-                class="btn btn-xs btn-danger">delete</button></li>
+        <li *ngFor="let calendar of calendars">{{calendar.description}}
+                <button (click)="edit(calendar)" class="btn btn-xs btn-info">edit</button>
+                <button (click)="confirmDelete(calendar)" class="btn btn-xs btn-danger">delete</button>
+        </li>
+        <!-- <li *ngFor="let calendar of calendars | async">{{calendar.description}} <button (click)="delete(calendar)"
+                class="btn btn-xs btn-danger">delete</button></li> -->
 </ul>

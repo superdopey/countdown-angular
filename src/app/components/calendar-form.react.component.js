@@ -13,31 +13,23 @@ var core_1 = require("@angular/core");
 var calendar_1 = require("../models/calendar");
 var calendar_service_1 = require("../services/calendar.service");
 var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
 require("rxjs/add/operator/switchMap");
-var CalendarFormComponent = /** @class */ (function () {
-    function CalendarFormComponent(calendarService, router, route, applicationRef) {
+var CalendarFormReactComponent = /** @class */ (function () {
+    function CalendarFormReactComponent(calendarService, router, route, fb) {
         this.calendarService = calendarService;
         this.router = router;
         this.route = route;
-        this.applicationRef = applicationRef;
+        this.fb = fb;
         this.calendar = new calendar_1.Calendar();
+        this.createForm();
     }
-    CalendarFormComponent.prototype.onSubmit = function () {
-        if (this.calendar.id == null) {
-            this.calendarService.create(this.calendar);
-        }
-        else {
-            this.calendarService.update(this.calendar);
-        }
-        //this.applicationRef.tick();
-        this.router.navigate(['/']);
+    CalendarFormReactComponent.prototype.createForm = function () {
+        this.heroForm = this.fb.group({
+            description: ['', forms_1.Validators.required],
+        });
     };
-    CalendarFormComponent.prototype.revert = function () {
-        this.calendar = this.originalCalendar;
-        //this.applicationRef.tick();        
-        this.router.navigate(['/']);
-    };
-    CalendarFormComponent.prototype.ngOnInit = function () {
+    CalendarFormReactComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params
             .switchMap(function (params) { return _this.calendarService.getCalendar(params['id']); })
@@ -47,28 +39,51 @@ var CalendarFormComponent = /** @class */ (function () {
             }
             else {
                 _this.calendar = calendar;
+                _this.ngOnChanges();
             }
-            //create deepcopy
-            _this.originalCalendar = Object.assign({}, _this.calendar);
         });
     };
-    Object.defineProperty(CalendarFormComponent.prototype, "diagnostic", {
+    //update form model from data model
+    CalendarFormReactComponent.prototype.ngOnChanges = function () {
+        this.heroForm.setValue({
+            description: this.calendar.description
+        });
+    };
+    CalendarFormReactComponent.prototype.prepareSaveCalendar = function () {
+        var formModel = this.heroForm.value;
+        return { id: this.calendar.id, description: formModel.description };
+    };
+    CalendarFormReactComponent.prototype.onSubmit = function () {
+        this.calendar = this.prepareSaveCalendar();
+        if (this.calendar.id == null) {
+            this.calendarService.create(this.calendar);
+        }
+        else {
+            this.calendarService.update(this.calendar);
+        }
+        this.ngOnChanges();
+        this.router.navigate(['/']);
+    };
+    CalendarFormReactComponent.prototype.revert = function () {
+        this.ngOnChanges();
+    };
+    Object.defineProperty(CalendarFormReactComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
         get: function () { return JSON.stringify(this.calendar); },
         enumerable: true,
         configurable: true
     });
-    CalendarFormComponent = __decorate([
+    CalendarFormReactComponent = __decorate([
         core_1.Component({
             selector: 'calendar-form',
-            templateUrl: './calendar-form.component.html',
+            templateUrl: './calendar-form.react.component.html',
         }),
         __metadata("design:paramtypes", [calendar_service_1.CalendarService,
             router_1.Router,
             router_1.ActivatedRoute,
-            core_1.ApplicationRef])
-    ], CalendarFormComponent);
-    return CalendarFormComponent;
+            forms_1.FormBuilder])
+    ], CalendarFormReactComponent);
+    return CalendarFormReactComponent;
 }());
-exports.CalendarFormComponent = CalendarFormComponent;
-//# sourceMappingURL=calendar-form.component.js.map
+exports.CalendarFormReactComponent = CalendarFormReactComponent;
+//# sourceMappingURL=calendar-form.react.component.js.map

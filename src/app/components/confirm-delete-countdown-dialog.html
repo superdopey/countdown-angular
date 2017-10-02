@@ -3,5 +3,5 @@
 </div>
 <div md-dialog-actions>
   <button md-button [md-dialog-close]="true" tabindex="2">Ja</button>
-  <button md-button (click)="onNoClick()" tabindex="-1">Nee</button>
+  <button md-button [md-dialog-close]="false"  tabindex="-1">Nee</button>
 </div>

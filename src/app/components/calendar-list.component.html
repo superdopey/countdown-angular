@@ -1,7 +1,14 @@
 <ul>
         <li *ngFor="let calendar of calendars">{{calendar.description}}
-                <button (click)="edit(calendar)" class="btn btn-xs btn-info">edit</button>
-                <button (click)="confirmDelete(calendar)" class="btn btn-xs btn-danger">delete</button>
+               
+
+ <button (click)="edit(calendar)" md-mini-fab color="primary">
+                          <md-icon class="md-24 mat-icon material-icons" aria-label="edit">edit</md-icon>
+                </button>
+                <button (click)="confirmDelete(calendar)" md-mini-fab color="warn">
+                          <md-icon class="md-24 mat-icon material-icons" aria-label="delete">close</md-icon>
+                </button>
+
         </li>
         <!-- <li *ngFor="let calendar of calendars | async">{{calendar.description}} <button (click)="delete(calendar)"
                 class="btn btn-xs btn-danger">delete</button></li> -->

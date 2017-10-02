@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Calendar } from '../models/calendar';
 import { CalendarService } from '../services/calendar.service';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdIcon } from '@angular/material';
 import { ConfirmDeleteCountDownDialog } from './confirm-delete-countdown-dialog';
 
 @Component({
@@ -20,10 +20,6 @@ export class CalendarListComponent implements OnInit {
         //console.log(this.calendars);
     }
 
-    delete(calendar: Calendar) {        
-        this.calendarService.delete(calendar);
-    }
-
     confirmDelete(calendar: Calendar){
         let dialogRef = this.dialog.open(ConfirmDeleteCountDownDialog, {
             width: '250px',
@@ -31,7 +27,12 @@ export class CalendarListComponent implements OnInit {
           });
       
           dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed', result);
+                if(result===true)
+                {
+                     this.calendarService.delete(calendar);
+                }
+
+           // console.log('The dialog was closed', result);
           });
     }
 

@@ -9,7 +9,9 @@ export class ConfirmDeleteCountDownDialog {
     constructor(
         public dialogRef: MdDialogRef<ConfirmDeleteCountDownDialog>,
         @Inject(MD_DIALOG_DATA) public data: any) { }
+        /*
     onNoClick(): void {
         this.dialogRef.close();
     }
+    */
 }

@@ -19,9 +19,6 @@ var ConfirmDeleteCountDownDialog = /** @class */ (function () {
         this.dialogRef = dialogRef;
         this.data = data;
     }
-    ConfirmDeleteCountDownDialog.prototype.onNoClick = function () {
-        this.dialogRef.close();
-    };
     ConfirmDeleteCountDownDialog = __decorate([
         core_1.Component({
             selector: 'confirm-delete-countdown-dialog',

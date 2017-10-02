@@ -24,16 +24,17 @@ var CalendarListComponent = /** @class */ (function () {
         this.calendars = this.calendarService.getCalendars();
         //console.log(this.calendars);
     };
-    CalendarListComponent.prototype.delete = function (calendar) {
-        this.calendarService.delete(calendar);
-    };
     CalendarListComponent.prototype.confirmDelete = function (calendar) {
+        var _this = this;
         var dialogRef = this.dialog.open(confirm_delete_countdown_dialog_1.ConfirmDeleteCountDownDialog, {
             width: '250px',
             data: {}
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed', result);
+            if (result === true) {
+                _this.calendarService.delete(calendar);
+            }
+            // console.log('The dialog was closed', result);
         });
     };
     CalendarListComponent.prototype.edit = function (calendar) {

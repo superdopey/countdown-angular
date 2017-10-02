@@ -27,6 +27,13 @@
                    autocomplete="off">                
             </div>
         </div>
+<md-form-field>
+  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+  <md-datepicker #picker></md-datepicker>
+</md-form-field>
+
+
         <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <button (click)="revert()" class="mat-raised-button" md-raised-button >Cancel</button>

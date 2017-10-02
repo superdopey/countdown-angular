@@ -51,7 +51,9 @@ var AppModule = /** @class */ (function () {
                 material_1.MdButtonModule,
                 material_1.MdCheckboxModule,
                 animations_1.BrowserAnimationsModule,
-                material_1.MatDialogModule
+                material_1.MatDialogModule,
+                material_1.MdDatepickerModule,
+                material_1.MdNativeDateModule
             ],
             declarations: [app_component_1.AppComponent,
                 calendar_list_component_1.CalendarListComponent,

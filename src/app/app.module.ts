@@ -12,7 +12,7 @@ import { CalendarFormReactComponent } from './components/calendar-form.react.com
 import { CalendarListComponent } from './components/calendar-list.component';
 import { ConfirmDeleteCountDownDialog } from './components/confirm-delete-countdown-dialog';
 
-import { MdButtonModule, MdCheckboxModule,  MatDialogModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule,  MatDialogModule, MdDatepickerModule,MdNativeDateModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
@@ -44,7 +44,9 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdCheckboxModule,
     BrowserAnimationsModule,    
-    MatDialogModule
+    MatDialogModule,
+    MdDatepickerModule,
+    MdNativeDateModule
     ],
 
   declarations: [AppComponent,
